@@ -1,233 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quer sair comigo?</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thaina</title>
   <style>
-    :root{
-      --bg: #faf7f2;
-      --accent: #b64f52;
-      --muted: #7a4a4c;
-      --container-w: 920px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
-    body{
-      background:var(--bg);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      color:var(--muted);
-      overflow:hidden;
-    }
-
-    .wrap{
-      width:100%;
-      max-width:var(--container-w);
-      background:transparent;
-      text-align:center;
-      position:relative;
-      padding:40px 24px;
-    }
-
-    h1{font-size:clamp(26px,4vw,44px);margin:0 0 18px;color:var(--accent);letter-spacing:0.01em;}
-    h2{font-size:20px;margin:0 0 14px;color:var(--muted);}
-
-    .buttons, .choices{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:12px;
-    }
-
-    button{
-      font-size:16px;
-      padding:10px 18px;
-      border-radius:12px;
-      border:0;
-      cursor:pointer;
-      transition:transform .18s ease, box-shadow .18s ease;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-      background:var(--accent);
-      color:#fff;
-      min-width:110px;
-    }
-    button:active{transform:translateY(2px)}
-
-    /* botão 'Não' estilo diferente */
-    #naoBtn{
-      position:absolute;
-      background:transparent;
-      color:var(--accent);
-      border:2px solid var(--accent);
-      min-width:100px;
-      padding:8px 14px;
-    }
-
-    /* opções secundárias */
-    .opcao{
-      background:#fff;
-      color:var(--accent);
-      border:2px solid rgba(182,79,82,0.12);
-      min-width:180px;
-      box-shadow:none;
-    }
-
-    /* voucher area */
-    #voucher{
-      display:none;
-      margin-top:22px;
-    }
-    #voucher img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
-
-    /* transitions */
-    .fade { opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
-    .fade.show { opacity:1; transform:translateY(0); }
-
-    /* small screens */
-    @media (max-width:480px){
-      #naoBtn{min-width:90px;padding:8px 10px}
-      .opcao{min-width:140px}
-    }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 940px; margin: 2rem auto; padding: 0 1rem; color: #222; line-height:1.5; }
+    header { text-align:center; margin-bottom:1.2rem; }
+    img.center { display:block; margin:1rem auto; max-width:100%; height:auto; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+    a.raw { color:#0366d6; text-decoration:none; }
+    footer { text-align:center; color:#666; font-size:0.9rem; margin-top:2rem; }
   </style>
 </head>
 <body>
-  <div class="wrap" id="wrap">
-    <h1 id="pergunta1" class="fade show">Quer sair comigo?</h1>
+  <header>
+    <h1>Thaina</h1>
+    <p>Projeto Thaina — imagem incluida abaixo.</p>
+  </header>
 
-    <div id="botoesPergunta1" class="buttons fade show">
-      <button id="simBtn" aria-label="Sim, quero sair">Sim</button>
-      <button id="naoBtn" aria-label="Não quero sair">Não</button>
-    </div>
+  <main>
+    <section>
+      <h2>Imagem</h2>
+      <p>Se por algum motivo a imagem não aparecer na página, clique no link raw abaixo para abri-la diretamente:</p>
+      <p><a class="raw" href="https://raw.githubusercontent.com/PedroAsteryx/thaina/main/IMG_20251122_110948.png" target="_blank" rel="noopener noreferrer">Abrir imagem raw</a></p>
 
-    <div id="opcoes" class="choices" style="display:none" role="dialog" aria-modal="true" aria-labelledby="opcoesTitle">
-      <h2 id="opcoesTitle">O que você prefere?</h2>
-      <div class="choices" style="width:100%;justify-content:center">
-        <button class="opcao" data-choice="comer">Comer fora</button>
-        <button class="opcao" data-choice="minhaCasa">Algo na minha casa</button>
-        <button class="opcao" data-choice="suaCasa">Algo na sua casa</button>
-      </div>
-    </div>
+      <!-- Uso do raw aqui garante carregamento mesmo que algum roteamento de Pages altere paths;
+           se preferir caminho relativo, troque src por "./IMG_20251122_110948.png" -->
+      <img src="https://raw.githubusercontent.com/PedroAsteryx/thaina/main/IMG_20251122_110948.png" alt="IMG_20251122_110948" class="center" />
+    </section>
+  </main>
 
-    <div id="voucher" aria-live="polite">
-      <!-- Substitua 'voucher.png' pela imagem que você enviar para o repositório -->
-      <img id="voucherImg" src="voucher.png" alt="Voucher - Use esse cupom com sabedoria" />
-      <p style="font-size:16px;color:var(--muted);margin-top:12px">
-        Use esse voucher com sabedoria, prazo de vencimento para o dia <strong>10/12/2025</strong>
-      </p>
-    </div>
-  </div>
-
-  <script>
-    const naoBtn = document.getElementById('naoBtn');
-    const simBtn = document.getElementById('simBtn');
-    const botoesPergunta1 = document.getElementById('botoesPergunta1');
-    const pergunta1 = document.getElementById('pergunta1');
-    const opcoes = document.getElementById('opcoes');
-    const voucher = document.getElementById('voucher');
-    const wrap = document.getElementById('wrap');
-
-    // margem interna para que o botão \"Não\" não desapareça ao sair da tela
-    const MARGEM = 18; // px from each edge of the viewport
-
-    function manterDentroViewport(x, y, el){
-      const rect = el.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-      const maxX = window.innerWidth - w - MARGEM;
-      const maxY = window.innerHeight - h - MARGEM;
-      const nx = Math.min(Math.max(x, MARGEM), Math.max(maxX, MARGEM));
-      const ny = Math.min(Math.max(y, MARGEM), Math.max(maxY, MARGEM));
-      return {x:nx, y:ny};
-    }
-
-    function moverBotaoAleatorio(){
-      // posição randômica dentro da área visível (considerando margem)
-      const x = Math.random() * (window.innerWidth - 2*MARGEM);
-      const y = Math.random() * (window.innerHeight - 2*MARGEM);
-      const pos = manterDentroViewport(x,y, naoBtn);
-      naoBtn.style.left = pos.x + 'px';
-      naoBtn.style.top = pos.y + 'px';
-    }
-
-    // posiciona inicialmente ao lado direito inferior, com ajuste para telas pequenas
-    function posicaoInicialNao(){
-      const startX = Math.min(window.innerWidth - naoBtn.offsetWidth - 40,  window.innerWidth*0.78);
-      const startY = Math.min(window.innerHeight - naoBtn.offsetHeight - 40, window.innerHeight*0.6);
-      const pos = manterDentroViewport(startX, startY, naoBtn);
-      naoBtn.style.left = pos.x + 'px';
-      naoBtn.style.top = pos.y + 'px';
-    }
-
-    // Evita que o botão NÃO desapareça ao redimensionar
-    window.addEventListener('resize', ()=> {
-      const pos = manterDentroViewport(parseFloat(naoBtn.style.left || 0), parseFloat(naoBtn.style.top || 0), naoBtn);
-      naoBtn.style.left = pos.x + 'px';
-      naoBtn.style.top = pos.y + 'px';
-    });
-
-    // comportamento evasivo
-    naoBtn.addEventListener('mouseover', moverBotaoAleatorio);
-    naoBtn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      moverBotaoAleatorio();
-    });
-
-    // transição: do primeiro bloco para o segundo
-    simBtn.addEventListener('click', ()=> {
-      pergunta1.classList.remove('show');
-      botoesPergunta1.classList.remove('show');
-      pergunta1.classList.add('fade');
-      botoesPergunta1.classList.add('fade');
-      setTimeout(()=>{
-        pergunta1.style.display = 'none';
-        botoesPergunta1.style.display = 'none';
-
-        // mostrar opções com fade
-        opcoes.style.display = 'block';
-        opcoes.classList.add('fade');
-        setTimeout(()=> opcoes.classList.add('show'), 40);
-
-        // reposicionar o botão NÃO para que não fique por cima das novas opções
-        posicaoInicialNao();
-      }, 560);
-    });
-
-    // quando escolher uma opção, mostra o voucher com transição
-    document.querySelectorAll('.opcao').forEach(btn => {
-      btn.addEventListener('click', ()=>{
-        opcoes.classList.remove('show');
-        opcoes.classList.add('fade');
-        setTimeout(()=>{
-          opcoes.style.display = 'none';
-          voucher.style.display = 'block';
-          voucher.classList.add('fade');
-          setTimeout(()=> voucher.classList.add('show'), 40);
-
-          // opcional: centraliza visualmente (mantendo o botão NÃO visível)
-          // scroll para top da área (em casos de viewport pequena)
-          window.scrollTo({top:0, behavior:'smooth'});
-        }, 500);
-      });
-    });
-
-    // inicialização
-    window.addEventListener('DOMContentLoaded', ()=>{
-      // forçar pequenos delays para aplicar classes de show (fade in)
-      setTimeout(()=>{
-        document.querySelectorAll('.fade.show').forEach(el=>el.classList.add('show'));
-      }, 20);
-      posicaoInicialNao();
-    });
-
-    // Acessibilidade: permitir seleção por teclado no botão SIM
-    simBtn.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') simBtn.click(); });
-    document.querySelectorAll('.opcao').forEach((b)=>{
-      b.addEventListener('keyup', (e)=>{ if(e.key === 'Enter' || e.key === ' ') b.click(); });
-    });
-  </script>
+  <footer>
+    <p>Página gerada a partir do repositório <a href="https://github.com/PedroAsteryx/thaina" target="_blank" rel="noopener noreferrer">PedroAsteryx/thaina</a>.</p>
+  </footer>
 </body>
 </html>
+
