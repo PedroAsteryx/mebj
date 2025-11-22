@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fica comigo?</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffe6f2;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 350px;
+    }
+    .btn {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #sim {
+      background: #ff4da6;
+      color: white;
+    }
+    #nao {
+      background: #ccc;
+    }
+    #mensagem {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #ff4da6;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Você quer ficar comigo? 💖</h2>
+
+    <button id="sim" class="btn">Sim</button>
+    <button id="nao" class="btn">Não</button>
+
+    <div id="mensagem">Sabia que você ia aceitar! 💕😍</div>
+  </div>
+
+  <script>
+    const btnNao = document.getElementById("nao");
+    const btnSim = document.getElementById("sim");
+    const msg = document.getElementById("mensagem");
+
+    // Quando tentar clicar "Não", ele foge
+    btnNao.addEventListener("mouseenter", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      btnNao.style.position = "absolute";
+      btnNao.style.left = x + "px";
+      btnNao.style.top = y + "px";
+    });
+
+    // Quando clicar "Sim"
+    btnSim.addEventListener("click", () => {
+      msg.style.display = "block";
+      btnSim.style.display = "none";
+      btnNao.style.display = "none";
+    });
+  </script>
+</body>
+</html>
